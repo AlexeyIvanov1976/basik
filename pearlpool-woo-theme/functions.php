@@ -98,8 +98,17 @@ function pearlpool_woo_scripts() {
     // jQuery
     wp_enqueue_script('jquery');
 
-    // Custom JavaScript
+    // Enqueue scripts and styles
     wp_enqueue_script('pearlpool-woo-scripts', PEARLPOOL_WOO_URI . '/js/scripts.js', array('jquery'), PEARLPOOL_WOO_VERSION, true);
+    
+    // Localize script with AJAX URL
+    wp_localize_script('pearlpool-woo-scripts', 'pearlpool_woo_params', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'theme_uri' => PEARLPOOL_WOO_URI,
+        'is_mobile' => wp_is_mobile(),
+        'cart_url' => wc_get_cart_url(),
+        'checkout_url' => wc_get_checkout_url(),
+    ));
 
     // Comment reply script
     if (is_singular() && comments_open() && get_option('thread_comments')) {
