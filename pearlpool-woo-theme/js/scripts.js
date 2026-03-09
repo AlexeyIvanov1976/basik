@@ -450,8 +450,8 @@
 
 })(jQuery);
 
-// Global params for JavaScript
-var pearlpool_woo_params = {
+// Global params for JavaScript - will be overridden by wp_localize_script
+var pearlpool_woo_params = window.pearlpool_woo_params || {
     ajax_url: '/wp-admin/admin-ajax.php',
     theme_uri: '/wp-content/themes/pearlpool-woo-theme/',
     is_mobile: window.innerWidth <= 768
